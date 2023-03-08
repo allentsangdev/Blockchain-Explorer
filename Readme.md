@@ -7,6 +7,6 @@ BCDV1020 - Lab Test
 - **Name:** Tsang Ho Sang
 - **Student ID:** 101448933
 
-## Instruction on How to Run This Project
+## Instruction on How to Run this Project
 1. Run "npm install" to install dependancy
 2. Run "npm run start" to deloy project on local host
