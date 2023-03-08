@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import './App.css';
 import Transfer from './Transfer';
 import Receipt from './Receipt';
@@ -15,10 +16,12 @@ const recieptData =
   }
 
 function App() {
+  const [receiptDisplay, setReceiptDisplay] = useState(false)
+  
   return (
     <div className="App">
-      <Transfer/>
-      <Receipt mockData={recieptData}/>
+      <Transfer displayReceipt={() => setReceiptDisplay(true)}/>
+      {receiptDisplay && <Receipt mockData={recieptData}/>}
     </div>
   );
 }

@@ -20,6 +20,7 @@ export default function TransferForm(props) {
     event.preventDefault();
     props.onSubmit(props.valueRef.current.value)
     // console.log(props.valueRef.current.value)
+    props.displayReceipt()
   };
 
   // Testing function
