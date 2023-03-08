@@ -8,5 +8,5 @@ BCDV1020 - Lab Test
 - **Student ID:** 101448933
 
 ## Instruction on How to Run this Project
-1. Run "npm install" to install dependancy
+1. Run "npm install" to install dependencies (ie. Material UI related dependencies )
 2. Run "npm run start" to deloy project on local host
