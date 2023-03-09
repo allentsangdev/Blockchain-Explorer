@@ -10,9 +10,6 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-const theme = createTheme();
 
 const sourceAccount = "0x6dC70bEa16f1ef94A7350989ca5413a2E180860f"
 const destinationAccount = "0x03d0cf3f4A832C8E2c224BaA4a049110F39E630F"
