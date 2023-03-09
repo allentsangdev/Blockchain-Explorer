@@ -54,7 +54,6 @@ export default function Transfer() {
 
   return (
     <div>
-    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -118,7 +117,6 @@ export default function Transfer() {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
 
     {receiptDisplay && <Receipt mockData={recieptData}/>}
   </div>
