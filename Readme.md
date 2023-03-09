@@ -1,6 +1,6 @@
 # Program Code
 
-BCDV1020 - Lab Test
+BCDV1020 - Blockchain Explorer
 
 ## Student Information
 
