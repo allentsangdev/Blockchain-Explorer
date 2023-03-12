@@ -42,6 +42,7 @@ function App() {
           <Route path="/wallet" element={<Wallet/>} exact/>
           <Route path="/addresses" element={<Addresses/>} exact/>
           <Route path="/transaction-history" element={<Transaction/>} exact/>
+          <Route path="/transfer" element={<Transfer/>} exact/>
         </Routes>
       
       
