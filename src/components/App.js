@@ -1,6 +1,9 @@
 import './App.css';
 import Transfer from './Transfer';
 import Transaction from './Transaction';
+import Addresses from './Addresses';
+import Home from './Home';
+import Wallet from './Wallet';
 import Navbar from './Navbar';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -35,8 +38,10 @@ function App() {
         </div>
       
         <Routes>
-          <Route path="/" element={<Transfer/>} />
-          <Route path="/transaction" element={<Transaction/>} exact/>
+          <Route path="/" element={<Home/>} />
+          <Route path="/wallet" element={<Wallet/>} exact/>
+          <Route path="/addresses" element={<Addresses/>} exact/>
+          <Route path="/transaction-history" element={<Transaction/>} exact/>
         </Routes>
       
       
