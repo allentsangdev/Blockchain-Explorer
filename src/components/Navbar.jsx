@@ -75,6 +75,17 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
+function Footer(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+        Blockchain Explorer
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
 
 export default function Navbar(props) {
   // Hooks to handle dark mode and light mode switch
@@ -115,6 +126,7 @@ export default function Navbar(props) {
         <Button variant='text'> <Link to="/wallet"> My Wallet </Link> </Button>
         <Button variant='text'> <Link to="/addresses"> Node Addresses </Link> </Button>
         <Button variant='text'> <Link to="/transaction-history"> Transaction History </Link> </Button>
+        <Footer style={{ position: "absolute", bottom: "0" }}/>
       </Drawer>
     </div>
   );
