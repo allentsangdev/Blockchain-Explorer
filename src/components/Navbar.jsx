@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Switch from '@mui/material/Switch';
 import Drawer from '@mui/material/Drawer';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { Link } from 'react-router-dom';
 
 // Material UI Navbar basic styling
 const useStyles = makeStyles((theme) => ({
@@ -110,10 +111,10 @@ export default function Navbar(props) {
       </AppBar>
       <Drawer anchor='left' open={drawer}>
         <Button className={classes.drawerCloseButton} onClick={closeToggleDrawer}> <HighlightOffIcon /> </Button>
-        <Button variant='text'> My Wallet </Button>
-        <Button variant='text'> Transaction History </Button>
-        <Button variant='text'> Node Addresses </Button>
-        <Button variant='text'> Transfer </Button>
+        <Button variant='text'> <Link to="/"> Home </Link> </Button>
+        <Button variant='text'> <Link to="/wallet"> My Wallet </Link> </Button>
+        <Button variant='text'> <Link to="/addresses"> Node Addresses </Link> </Button>
+        <Button variant='text'> <Link to="/transaction-history"> Transaction History </Link> </Button>
       </Drawer>
     </div>
   );
