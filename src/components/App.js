@@ -1,5 +1,6 @@
 import './App.css';
 import Transfer from './Transfer';
+import Transaction from './Transaction';
 import Navbar from './Navbar';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -29,6 +30,7 @@ function App() {
       <div className="App">
         <Navbar switchTheme={switchTheme}/>
         <Transfer/>
+        <Transaction/>
       </div>
     </ThemeProvider>
   );
