@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import Switch from '@mui/material/Switch';
 import Drawer from '@mui/material/Drawer';
-
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 // Material UI Navbar basic styling
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +20,10 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-  }
+  },
+  drawerCloseButton: {
+    marginLeft: theme.spacing(17),
+  },
 }));
 
 // Material UI Switch Styling
@@ -81,9 +84,13 @@ export default function Navbar(props) {
       props.switchTheme(switchState)  
   }
 
+  // Hooks to handle drawer toggle
   const [drawer, setDrawer] = useState(false)
-  const toggleDrawer = () => {
+  const openToggleDrawer = () => {
     setDrawer(true)
+  }
+  const closeToggleDrawer = () => {
+    setDrawer(false)
   }
 
   return (
@@ -92,7 +99,7 @@ export default function Navbar(props) {
       
       <AppBar position='sticky' style={{ zIndex: 1 }}>
         <Toolbar>
-          <Button className={classes.menuButton} onClick={toggleDrawer}>
+          <Button className={classes.menuButton} onClick={openToggleDrawer}>
             <MenuIcon />
           </Button>
           <Typography variant="h6" className={classes.title}>
@@ -101,8 +108,9 @@ export default function Navbar(props) {
           <MaterialUISwitch sx={{ m: 1 }} onClick={handleSwitch} defaultChecked />
         </Toolbar>
       </AppBar>
-      <Drawer anchor='left' open={drawer} className={classes.button}>
-        <Button className={classes.button} variant='text'> My Wallet </Button>
+      <Drawer anchor='left' open={drawer}>
+        <Button className={classes.drawerCloseButton} onClick={closeToggleDrawer}> <HighlightOffIcon /> </Button>
+        <Button variant='text'> My Wallet </Button>
         <Button variant='text'> Transaction History </Button>
         <Button variant='text'> Node Addresses </Button>
         <Button variant='text'> Transfer </Button>
