@@ -10,6 +10,7 @@ BCDV1020 - Blockchain Explorer
 ## Live Demo
 https://blockchain-explorer-gbc.netlify.app/
 
-## Instruction on How to Run this Project
-1. Run "npm install" to install dependencies (ie. Material UI related dependencies )
-2. Run "npm run start" to deloy project on local host
+## Instruction on How to Run this Project Locally
+1. Download this GitHub Repo or Run ```sh git clone https://github.com/allentsangdev/Blockchain-Explorer.git ``` to clone this Repo to your local environment
+2. Run "npm install" to install dependencies (ie. Material UI related dependencies )
+3. Run "npm run start" to deloy project on local host
