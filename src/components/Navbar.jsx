@@ -10,6 +10,7 @@ import Switch from '@mui/material/Switch';
 import Drawer from '@mui/material/Drawer';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { Link } from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 // Material UI Switch Styling
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -89,9 +90,6 @@ export default function Navbar(props) {
     setDrawer(false)
   }
 
-  // Material UI useTheme hook
-  const theme = useTheme()
-
   return (
   
     <>
@@ -107,11 +105,11 @@ export default function Navbar(props) {
         </Toolbar>
       </AppBar>
       <Drawer anchor='left' open={drawer}>
-        <Button className='drawerCloseButton' style={{marginLeft: 120}} onClick={closeToggleDrawer}> <HighlightOffIcon /> </Button>
-        <Button variant='text'> <Link to="/" style={{color: theme.palette.background.default, textDecoration: 'none' }}> Home </Link> </Button>
-        <Button variant='text'> <Link to="/wallet" style={{color: theme.palette.background.default, textDecoration: 'none' }}> My Wallet </Link> </Button>
-        <Button variant='text'> <Link to="/addresses" style={{color: theme.palette.background.default, textDecoration: 'none' }}> Node Addresses </Link> </Button>
-        <Button variant='text'> <Link to="/transaction-history" style={{color: theme.palette.background.default, textDecoration: 'none' }}> Transaction History </Link> </Button>
+        <Button className='drawerCloseButton' style={{marginLeft: 120, color: props.currentTheme.palette.text.primary }} onClick={closeToggleDrawer}> <HighlightOffIcon /> </Button>
+        <Button variant='text'> <Link to="/" style={{color: props.currentTheme.palette.text.primary, textDecoration: 'none' }}> Home </Link> </Button>
+        <Button variant='text'> <Link to="/wallet" style={{color: props.currentTheme.palette.text.primary, textDecoration: 'none' }}> My Wallet </Link> </Button>
+        <Button variant='text'> <Link to="/addresses" style={{color: props.currentTheme.palette.text.primary, textDecoration: 'none' }}> Node Addresses </Link> </Button>
+        <Button variant='text'> <Link to="/transaction-history" style={{color: props.currentTheme.palette.text.primary, textDecoration: 'none' }}> Transaction History </Link> </Button>
         <Footer style={{ position: "absolute", bottom: "0" }}/>
       </Drawer>
     </>

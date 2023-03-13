@@ -26,17 +26,20 @@ const lightThemeMode = createTheme({
   },
 });
 
+
+
 // Rendering App Component
 function App() {  
   const [darkTheme, setTheme] = useState(true)
   const switchTheme = (_theme) => setTheme(_theme)
+  const theme = darkTheme ? darkThemeMode : lightThemeMode
 
   return (
     <BrowserRouter>
-      <ThemeProvider theme={darkTheme ? darkThemeMode : lightThemeMode}>
+      <ThemeProvider theme={theme}>
         <CssBaseline/>
         <div className="App">
-          <Navbar switchTheme={switchTheme}/>          
+          <Navbar switchTheme={switchTheme} currentTheme={theme}/>          
         </div>
       
         <Routes>

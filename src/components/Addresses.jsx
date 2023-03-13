@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import SensorOccupiedIcon from '@mui/icons-material/SensorOccupied';
 import { Link } from 'react-router-dom';
+import { useTheme } from '@material-ui/core';
 
 // Defining the mock data
 // With only one object for testing
@@ -14,7 +15,11 @@ const nodeAddresses = [ "0x6dC70bEa16f1ef94A7350989ca5413a2E180860f", "0x03d0cf3
 "0x69CE2776D92bcC75ab4148B54d8C86A6F136C8AC"
 ]
 
+
 export default function Addresses() {
+
+  // Material UI useTheme hook
+  const theme = useTheme()
   
   return (
     <div>
@@ -32,7 +37,7 @@ export default function Addresses() {
               
                 {nodeAddresses.map((address) => (
                     <Grid item xs={12}>
-                        <Link to="/transfer"> {address} </Link>
+                        <Link to="/transfer" style={{color: theme.palette.background.default}}> {address} </Link>
                     </Grid>
                 ))}
 
