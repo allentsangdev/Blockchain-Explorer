@@ -11,8 +11,6 @@ import { useState } from 'react';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import { makeStyles, styled } from '@material-ui/core/styles';
 
-
-
 // Dark Mode and Light Mode Material UI theme setting
 const darkThemeMode = createTheme({
   palette: {
@@ -25,8 +23,6 @@ const lightThemeMode = createTheme({
     mode: 'light',
   },
 });
-
-
 
 // Rendering App Component
 function App() {  

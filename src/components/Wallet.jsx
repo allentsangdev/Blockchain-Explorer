@@ -6,6 +6,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import Paper from '@mui/material/Paper';
+
 
 // Defining the mock data
 // With only one object for testing
@@ -21,28 +23,28 @@ export default function Wallet() {
     <div>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
-          <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
-            <AccountBalanceWalletIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            My Wallet
-          </Typography>
-          <Box component="form" noValidate sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <Typography component="p" variant="p"> Address: {walletData.address} </Typography>
+          <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
+            <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+              <AccountBalanceWalletIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              My Wallet
+            </Typography>
+            <Box component="form" noValidate sx={{ mt: 3 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Typography component="p" variant="p"> Address: {walletData.address} </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography component="p" variant="p"> Balance: {walletData.balance} </Typography>
+                </Grid>
               </Grid>
-              <Grid item xs={12}>
-                <Typography component="p" variant="p"> Balance: {walletData.balance} </Typography>
+              
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                </Grid>
               </Grid>
-            </Grid>
-            
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-              </Grid>
-            </Grid>
-          </Box>
+            </Box>
         </Box>
       </Container>
 
