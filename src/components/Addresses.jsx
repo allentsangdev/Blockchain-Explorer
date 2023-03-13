@@ -8,6 +8,7 @@ import Container from '@mui/material/Container';
 import SensorOccupiedIcon from '@mui/icons-material/SensorOccupied';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@material-ui/core';
+import { ThemeProvider } from '@emotion/react';
 
 // Defining the mock data
 // With only one object for testing
@@ -16,13 +17,11 @@ const nodeAddresses = [ "0x6dC70bEa16f1ef94A7350989ca5413a2E180860f", "0x03d0cf3
 ]
 
 
-export default function Addresses() {
-
-  // Material UI useTheme hook
-  const theme = useTheme()
+export default function Addresses(props) {
   
   return (
     <div>
+      
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
@@ -37,7 +36,7 @@ export default function Addresses() {
               
                 {nodeAddresses.map((address) => (
                     <Grid item xs={12}>
-                        <Link to="/transfer" style={{color: theme.palette.background.default}}> {address} </Link>
+                        <Link to="/transfer" style={{color: props.currentTheme.palette.text.primary}}> {address} </Link>
                     </Grid>
                 ))}
 
@@ -50,6 +49,7 @@ export default function Addresses() {
           </Box>
         </Box>
       </Container>
+
 
   </div>
   );
