@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { makeStyles, styled } from '@material-ui/core/styles';
+import { styled } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -9,23 +10,6 @@ import Switch from '@mui/material/Switch';
 import Drawer from '@mui/material/Drawer';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { Link } from 'react-router-dom';
-
-// Material UI Navbar basic styling
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    marginBottom: theme.spacing(11)
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  drawerCloseButton: {
-    marginLeft: theme.spacing(17),
-  },
-}));
 
 // Material UI Switch Styling
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -89,7 +73,7 @@ function Footer(props) {
 
 export default function Navbar(props) {
   // Hooks to handle dark mode and light mode switch
-  const classes = useStyles();
+  //const classes = useStyles();
   const [switchState, setSwitchState] = useState(false)
   const handleSwitch = () => {
       setSwitchState(!switchState)
@@ -105,30 +89,32 @@ export default function Navbar(props) {
     setDrawer(false)
   }
 
+  // Material UI useTheme hook
+  const theme = useTheme()
+
   return (
   
-    <div className={classes.root}>
-      
-      <AppBar position='sticky' style={{ zIndex: 1 }}>
+    <>
+      <AppBar position='sticky' style={{ zIndex: 1, flexFlow: 1 }}>
         <Toolbar>
-          <Button className={classes.menuButton} onClick={openToggleDrawer}>
+          <Button className='menuButton' style={{marginRight: 2}} onClick={openToggleDrawer}>
             <MenuIcon />
           </Button>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" className='title' style={{flexGrow: 1 }}>
             Blockchain Explorer
           </Typography>
           <MaterialUISwitch sx={{ m: 1 }} onClick={handleSwitch} defaultChecked />
         </Toolbar>
       </AppBar>
       <Drawer anchor='left' open={drawer}>
-        <Button className={classes.drawerCloseButton} onClick={closeToggleDrawer}> <HighlightOffIcon /> </Button>
-        <Button variant='text'> <Link to="/"> Home </Link> </Button>
-        <Button variant='text'> <Link to="/wallet"> My Wallet </Link> </Button>
-        <Button variant='text'> <Link to="/addresses"> Node Addresses </Link> </Button>
-        <Button variant='text'> <Link to="/transaction-history"> Transaction History </Link> </Button>
+        <Button className='drawerCloseButton' style={{marginLeft: 120}} onClick={closeToggleDrawer}> <HighlightOffIcon /> </Button>
+        <Button variant='text'> <Link to="/" style={{color: theme.palette.background.default, textDecoration: 'none' }}> Home </Link> </Button>
+        <Button variant='text'> <Link to="/wallet" style={{color: theme.palette.background.default, textDecoration: 'none' }}> My Wallet </Link> </Button>
+        <Button variant='text'> <Link to="/addresses" style={{color: theme.palette.background.default, textDecoration: 'none' }}> Node Addresses </Link> </Button>
+        <Button variant='text'> <Link to="/transaction-history" style={{color: theme.palette.background.default, textDecoration: 'none' }}> Transaction History </Link> </Button>
         <Footer style={{ position: "absolute", bottom: "0" }}/>
       </Drawer>
-    </div>
+    </>
   );
 }
 
