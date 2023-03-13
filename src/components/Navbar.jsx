@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { styled } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
+import { styled } from '@mui/material//styles';
+import AppBar from '@mui/material//AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import Switch from '@mui/material/Switch';
 import Drawer from '@mui/material/Drawer';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { Link } from 'react-router-dom';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 // Material UI Switch Styling
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({

@@ -9,7 +9,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-import { makeStyles, styled } from '@material-ui/core/styles';
 
 // Dark Mode and Light Mode Material UI theme setting
 const darkThemeMode = createTheme({

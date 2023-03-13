@@ -7,8 +7,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import SensorOccupiedIcon from '@mui/icons-material/SensorOccupied';
 import { Link } from 'react-router-dom';
-import { useTheme } from '@material-ui/core';
-import { ThemeProvider } from '@emotion/react';
+
 
 // Defining the mock data
 // With only one object for testing
