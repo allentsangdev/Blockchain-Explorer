@@ -93,10 +93,10 @@ export default function Navbar(props) {
     <>
       <AppBar position='sticky' style={{ zIndex: 1, flexFlow: 1 }}>
         <Toolbar>
-          <Button className='menuButton' style={{marginRight: 2}} onClick={openToggleDrawer}>
+          <Button className='menuButton' style={{marginRight: 2, color: props.currentTheme.palette.text.primary }} onClick={openToggleDrawer}>
             <MenuIcon />
           </Button>
-          <Typography variant="h6" className='title' style={{flexGrow: 1 }}>
+          <Typography variant="h6" className='title' style={{flexGrow: 1, color: props.currentTheme.palette.text.primary }}>
             Blockchain Explorer
           </Typography>
           <MaterialUISwitch sx={{ m: 1 }} onClick={handleSwitch} defaultChecked />
