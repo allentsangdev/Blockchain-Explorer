@@ -4,20 +4,18 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import Avatar from '@mui/material/Avatar';
 
 function Receipt(props) {
     return (
         
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
-                    <Box
-                        sx={{
-                            marginTop: 8,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                        }}
-                    >
+                    <Box sx={{ marginTop: 4, marginBottom: 8, display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
+                        <Avatar sx={{ m: 1, bgcolor: 'warning.light' }}>
+                            <ReceiptLongIcon />
+                        </Avatar>
                         <Typography component="h1" variant="h5">
                             Receipt
                         </Typography>

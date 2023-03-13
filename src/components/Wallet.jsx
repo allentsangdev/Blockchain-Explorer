@@ -6,8 +6,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import Paper from '@mui/material/Paper';
-
 
 // Defining the mock data
 // With only one object for testing
@@ -47,7 +45,7 @@ export default function Wallet() {
             </Box>
         </Box>
       </Container>
-
-  </div>
+    </div>
+    
   );
 }
