@@ -9,25 +9,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import HistoryIcon from '@mui/icons-material/History';
 
-// Defining the mock data
-// With only one object for testing
-/*
-const transactionHistoryData =
-  {
-      transactionHash: "0x1367409cddde9a7c8571d34f935adcb2a50214f2afbb151bb16eaf8847dda2ff",
-      status: "SUCCESS",
-      timeStamp: "2022-03-29T044:08:03.172Z",
-      from: "0x6dC70bEa16f1ef94A7350989ca5413a2E180860f",
-      to: "0x03d0cf3f4A832C8E2c224BaA4a049110F39E630F",
-      value: "250 ETH",
-      gasUsed: "21000"
-  }
-  */
-
 export default function Transaction() {
   
   const apiUri = 'https://blockchain-explorer-api-z0rh.onrender.com/account/history'
-  const [transactionHistoryData, setTransactionHistoryData] = useState({})
+  const [transactionHistoryData, setTransactionHistoryData] = useState(null)
 
   // component did mount hook to fetch data from api 
   useEffect(() => {
@@ -51,7 +36,7 @@ export default function Transaction() {
           <Box component="form" noValidate sx={{ mt: 3 }}>
           {transactionHistoryData && <Grid container spacing={2}>
               <Grid item xs={12}>
-                 <Typography component="p" variant="p"> Transaction Hash: {transactionHistoryData[0].transactionHash} </Typography>
+              <Typography component="p" variant="p"> Transaction Hash: {transactionHistoryData[0].transactionHash} </Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography component="p" variant="p"> Status: {transactionHistoryData[0].status} </Typography>
