@@ -23,7 +23,7 @@ export default function Addresses(props) {
   }, [])
 
   return (
-    <div>
+    <>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
@@ -49,6 +49,6 @@ export default function Addresses(props) {
           </Box>
         </Box>
       </Container>
-    </div>
+    </>
   );
 }

@@ -38,7 +38,7 @@ export default function Transaction() {
   }, [])
 
   return (
-    <div>
+    <>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
@@ -80,7 +80,6 @@ export default function Transaction() {
           </Box>
         </Box>
       </Container>
-
-  </div>
+  </>
   );
 }

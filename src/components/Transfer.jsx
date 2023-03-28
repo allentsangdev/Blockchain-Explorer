@@ -50,7 +50,7 @@ export default function Transfer() {
   }
 
   return (
-    <div>
+    <>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -116,6 +116,6 @@ export default function Transfer() {
       </Container>
 
     {receiptDisplay && <Receipt mockData={recieptData}/>}
-  </div>
+  </>
   );
 }
