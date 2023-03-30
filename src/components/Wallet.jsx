@@ -21,8 +21,7 @@ const walletData =
 
 export default function Wallet() {
   
-  // const apiUri = 'https://blockchain-explorer-api-z0rh.onrender.com/account/balance/0x6dC70bEa16f1ef94A7350989ca5413a2E180860f'
-  const apiUri = "http://localhost:4000/account/balance/0x6dC70bEa16f1ef94A7350989ca5413a2E180860f"
+  const apiUri = 'https://blockchain-explorer-api-z0rh.onrender.com/account/balance/0x6dC70bEa16f1ef94A7350989ca5413a2E180860f'
   const [walletData, setWalletData] = useState(null)
 
   // component did mount hook to fetch data from api 
