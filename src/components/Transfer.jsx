@@ -10,9 +10,10 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import axios from 'axios'
 
-const sourceAccount = "0x6dC70bEa16f1ef94A7350989ca5413a2E180860f"
-const destinationAccount = "0x03d0cf3f4A832C8E2c224BaA4a049110F39E630F"
+const sourceAccount = "3b848f051702b26765853c28d6f8b5d4777c198e251073fbd62fb2937bf2eaae"
+const destinationAccount = "0x6dC70bEa16f1ef94A7350989ca5413a2E180860f"
 
 // Defining the mock data
 // With only one object for testing
@@ -28,6 +29,11 @@ const recieptData =
 
 export default function Transfer() {
   
+  React.useEffect(()=> {
+    alert('💡 Please note that the backend api of this transaction component is pointing to a local blockchain on HTTP://127.0.0.1:7545, please replace the "From Address Private Key" and "To Address" with info obtained from your local blockchain 💡')
+  },[])
+
+
   // declare useRef hook to track the state change of the user input in the Amount text box
   const valueRef = useRef(0)
   // declare state variable to keep track to submited amount value
@@ -35,7 +41,7 @@ export default function Transfer() {
   // declare state variable to handle toggle the render of the receipt
   const [receiptDisplay, setReceiptDisplay] = useState(false)
   
-  // Event Handlers
+  // Form Submit Event Handlers
   const handleSubmit = (event) => {
     event.preventDefault();
     setAmount(valueRef.current.value)
@@ -43,39 +49,63 @@ export default function Transfer() {
     setReceiptDisplay(true)
   };
 
-  // Testing function
-  // To check if valueRef being updated
+  // Testing function. To check if valueRef being updated
   const amountChange = (value) => {
     console.log(value.current.value)
+  }
+  
+
+  // Submit Event Handler
+  // Send a POST request to the api to trigger a transaction
+  // api endpoint expect following JSON structure from the request body
+  /*{
+			"source":"3b848f051702b26765853c28d6f8b5d4777c198e251073fbd62fb2937bf2eaae",
+			"destination":"0x6dC70bEa16f1ef94A7350989ca5413a2E180860f",
+			"value":"5000000000000000000"
+		} */
+
+  async function handleTransfer(event) {
+    
+    try{
+      event.preventDefault()
+
+      const sourceKey = document.getElementById('fromAddress').value
+      const destinationAddress = document.getElementById('toAddress').value
+      const formAmount = document.getElementById('amount').value
+
+      const requestBody = {
+        source: sourceKey ,
+        destination: destinationAddress,
+        value: formAmount.toString()
+      }
+
+      axios.post('http://localhost:4000/transaction/send', requestBody)
+        .then( alert('Transaction Completed ✅. Please check the transaction receipt below.'))
+        .then(setReceiptDisplay(true))
+
+    }catch(error){
+      alert(`Client Side Error: ${error}`)
+    }
+
   }
 
   return (
     <>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Transfer
-          </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+        <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}> <LockOutlinedIcon /> </Avatar>
+          <Typography component="h1" variant="h5"> Transfer </Typography>
+          <Box component="form" noValidate onSubmit={handleTransfer} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
                   id="fromAddress"
-                  label="From Address"
+                  label="From Address Private Key"
                   autoFocus
+                  type="password"
                   defaultValue={sourceAccount}
                 />
               </Grid>
@@ -83,7 +113,7 @@ export default function Transfer() {
                 <TextField
                   required
                   fullWidth
-                  id="ToAddress"
+                  id="toAddress"
                   label="To Address"
                   defaultValue={destinationAccount}
                 />
@@ -99,18 +129,7 @@ export default function Transfer() {
                 />
               </Grid>
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Submit
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-              </Grid>
-            </Grid>
+            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}> Submit </Button>
           </Box>
         </Box>
       </Container>
