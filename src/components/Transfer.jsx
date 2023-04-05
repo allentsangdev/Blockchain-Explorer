@@ -11,6 +11,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import axios from 'axios'
+import { useForm } from "react-hook-form";
+
 
 const sourceAccount = "3b848f051702b26765853c28d6f8b5d4777c198e251073fbd62fb2937bf2eaae"
 const destinationAccount = "0x6dC70bEa16f1ef94A7350989ca5413a2E180860f"
@@ -41,13 +43,13 @@ export default function Transfer() {
   // declare state variable to handle toggle the render of the receipt
   const [receiptDisplay, setReceiptDisplay] = useState(false)
   
-  // Form Submit Event Handlers
+  /* Form Submit Event Handlers
   const handleSubmit = (event) => {
     event.preventDefault();
     setAmount(valueRef.current.value)
     // console.log(valueRef.current.value)
     setReceiptDisplay(true)
-  };
+  }; */
 
   // Testing function. To check if valueRef being updated
   const amountChange = (value) => {
@@ -64,30 +66,28 @@ export default function Transfer() {
 			"value":"5000000000000000000"
 		} */
 
-  async function handleTransfer(event) {
+  async function handleTransfer(data) {
     
     try{
-      event.preventDefault()
-
-      const sourceKey = document.getElementById('fromAddress').value
-      const destinationAddress = document.getElementById('toAddress').value
-      const formAmount = document.getElementById('amount').value
-
       const requestBody = {
-        source: sourceKey ,
-        destination: destinationAddress,
-        value: formAmount.toString()
+        source: data.source ,
+        destination: data.destination,
+        value: data.value
       }
 
       axios.post('http://localhost:4000/transaction/send', requestBody)
         .then( alert('Transaction Completed ✅. Please check the transaction receipt below.'))
         .then(setReceiptDisplay(true))
+        .then(console.log(data))
 
     }catch(error){
       alert(`Client Side Error: ${error}`)
     }
 
   }
+
+  // react hook form
+  const { register, handleSubmit, formState: {errors} } = useForm();
 
   return (
     <>
@@ -96,7 +96,7 @@ export default function Transfer() {
         <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}> <LockOutlinedIcon /> </Avatar>
           <Typography component="h1" variant="h5"> Transfer </Typography>
-          <Box component="form" noValidate onSubmit={handleTransfer} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={handleSubmit(handleTransfer)} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
@@ -107,6 +107,8 @@ export default function Transfer() {
                   autoFocus
                   type="password"
                   defaultValue={sourceAccount}
+                  {...register("source", {required:"Required"})}
+                  error={!!errors.source ? errors.source.message : null}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -116,6 +118,8 @@ export default function Transfer() {
                   id="toAddress"
                   label="To Address"
                   defaultValue={destinationAccount}
+                  {...register("destination", {required:"Required"})}
+                  error={!!errors.destination ? errors.destination.message : null}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -124,8 +128,12 @@ export default function Transfer() {
                   fullWidth
                   id="amount"
                   label="Amount"
+                  placeholder="Please input amount in Wei"
                   inputRef={valueRef}
                   onChange={() => amountChange(valueRef)}
+                  {...register("value", {required:"Required"})}
+                  error={!!errors.value ? errors.value.message : null}
+                  helperText={errors.value ? errors.value.message : null}
                 />
               </Grid>
             </Grid>
