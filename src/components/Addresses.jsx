@@ -12,7 +12,8 @@ import { Link } from 'react-router-dom';
 
 export default function Addresses(props) {
 
-  const apiUri = 'https://blockchain-explorer-api-z0rh.onrender.com/account/addresses'
+  //const apiUri = 'https://blockchain-explorer-api-z0rh.onrender.com/account/addresses'
+  const apiUri = 'http://localhost:4000/account/addresses'
   const [nodeAddresses, setNodeAddresses] = useState([])
 
   // component did mount hook to fetch data from api 

@@ -11,7 +11,8 @@ import HistoryIcon from '@mui/icons-material/History';
 
 export default function Transaction() {
   
-  const apiUri = 'https://blockchain-explorer-api-z0rh.onrender.com/account/history'
+  //const apiUri = 'https://blockchain-explorer-api-z0rh.onrender.com/account/history'
+  const apiUri = 'http://localhost:4000/account/history'
   const [transactionHistoryData, setTransactionHistoryData] = useState(null)
 
   // component did mount hook to fetch data from api 
