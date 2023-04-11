@@ -12,28 +12,12 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import axios from 'axios'
 import { useForm } from "react-hook-form";
-
-
-const sourceAccount = "3b848f051702b26765853c28d6f8b5d4777c198e251073fbd62fb2937bf2eaae"
-const destinationAccount = "0x6dC70bEa16f1ef94A7350989ca5413a2E180860f"
-
-// Defining the mock data
-// With only one object for testing
-/*const recieptData =
-  {
-      transactionHash: "0x1367409cddde9a7c8571d34f935adcb2a50214f2afbb151bb16eaf8847dda2ff",
-      blockHash: "0xf32c44c730609dbbf6d5ba0ab7d9747460b8ab4f3d1c81d822cc10a6e48f2613",
-      blockNumber: "10",
-      from: "0x6dC70bEa16f1ef94A7350989ca5413a2E180860f",
-      to: "0x03d0cf3f4A832C8E2c224BaA4a049110F39E630F",
-      gasUsed: "21000"
-  }
-  */
+import { useParams } from 'react-router-dom';
 
 export default function Transfer() {
   
   React.useEffect(()=> {
-    alert('💡 Please note that the backend api of this transaction component is pointing to a local blockchain on HTTP://127.0.0.1:7545, please replace the "From Address Private Key" and "To Address" with info obtained from your local blockchain 💡')
+    alert('💡 Please note that the backend API of this transaction component is pointing to a local blockchain running on your local machine, please \n\n1️⃣ Make sure a blockchain instance (ie.Ganache) is running on HTTP://127.0.0.1:7545 \n2️⃣ Fill in the "From Address Private Key" and "To Address" with info obtained from your local blockchain')
   },[])
 
 
@@ -115,6 +99,9 @@ export default function Transfer() {
   // react hook form
   const { register, handleSubmit, formState: {errors} } = useForm();
 
+  //
+  const { address } = useParams();
+
   return (
     <>
       <Container component="main" maxWidth="xs">
@@ -124,15 +111,26 @@ export default function Transfer() {
           <Typography component="h1" variant="h5"> Transfer </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit(handleTransfer)} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
+            <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
                   id="fromAddress"
+                  label="From Address"
+                  autoFocus
+                  defaultValue={address}
+                  {...register("sourceAddress", {required:"Required"})}
+                  error={!!errors.source ? errors.source.message : null}
+                />
+              </Grid>  
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="fromAddressKey"
                   label="From Address Private Key"
                   autoFocus
                   type="password"
-                  defaultValue={sourceAccount}
                   {...register("source", {required:"Required"})}
                   error={!!errors.source ? errors.source.message : null}
                 />
@@ -143,7 +141,6 @@ export default function Transfer() {
                   fullWidth
                   id="toAddress"
                   label="To Address"
-                  defaultValue={destinationAccount}
                   {...register("destination", {required:"Required"})}
                   error={!!errors.destination ? errors.destination.message : null}
                 />
@@ -172,3 +169,22 @@ export default function Transfer() {
   </>
   );
 }
+
+
+/* Mock Data
+const sourceAccount = "3b848f051702b26765853c28d6f8b5d4777c198e251073fbd62fb2937bf2eaae"
+const destinationAccount = "0x6dC70bEa16f1ef94A7350989ca5413a2E180860f"
+*/
+
+// Defining the mock data
+// With only one object for testing
+/*const recieptData =
+  {
+      transactionHash: "0x1367409cddde9a7c8571d34f935adcb2a50214f2afbb151bb16eaf8847dda2ff",
+      blockHash: "0xf32c44c730609dbbf6d5ba0ab7d9747460b8ab4f3d1c81d822cc10a6e48f2613",
+      blockNumber: "10",
+      from: "0x6dC70bEa16f1ef94A7350989ca5413a2E180860f",
+      to: "0x03d0cf3f4A832C8E2c224BaA4a049110F39E630F",
+      gasUsed: "21000"
+  }
+  */

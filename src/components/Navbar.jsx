@@ -107,7 +107,7 @@ export default function Navbar(props) {
         <Link to="/" style={{textDecoration: 'none' }}> <Button style={{color: props.currentTheme.palette.text.primary, width:'100%'}} variant='text'>Home</Button></Link>
         <Link to="/wallet" style={{textDecoration: 'none' }}> <Button style={{color: props.currentTheme.palette.text.primary, width:'100%'}} variant='text'>  My Wallet </Button> </Link> 
         <Link to="/addresses" style={{textDecoration: 'none' }}> <Button style={{color: props.currentTheme.palette.text.primary, width:'100%'}} variant='text'>  Node Addresses </Button> </Link> 
-        <Link to="/transaction-history" style={{textDecoration: 'none' }}> <Button style={{color: props.currentTheme.palette.text.primary,width:'100%'}} variant='text'> Transaction History </Button> </Link> 
+        <Link to="/transaction-history" style={{textDecoration: 'none' }}> <Button style={{color: props.currentTheme.palette.text.primary, width:'100%'}} variant='text'> Transaction History </Button> </Link> 
         <Footer style={{ position: "absolute", bottom: "0" }}/>
       </Drawer>
     </>

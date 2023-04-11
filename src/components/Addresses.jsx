@@ -39,7 +39,7 @@ export default function Addresses(props) {
 
               {nodeAddresses.map((address) => (
                 <Grid item xs={12}>
-                  <Link to="/transfer" style={{ color: props.currentTheme.palette.text.primary }}> {address} </Link>
+                  <Link to={`/transfer/${address}`} style={{ color: props.currentTheme.palette.text.primary }}> {address} </Link>
                 </Grid>
               ))}
             </Grid>
