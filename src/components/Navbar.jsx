@@ -104,10 +104,10 @@ export default function Navbar(props) {
       </AppBar>
       <Drawer anchor='left' open={drawer}>
         <Button className='drawerCloseButton' style={{marginLeft: 120, color: props.currentTheme.palette.text.primary }} onClick={closeToggleDrawer}> <HighlightOffIcon /> </Button>
-        <Button variant='text'> <Link to="/" style={{color: props.currentTheme.palette.text.primary, textDecoration: 'none' }}> Home </Link> </Button>
-        <Button variant='text'> <Link to="/wallet" style={{color: props.currentTheme.palette.text.primary, textDecoration: 'none' }}> My Wallet </Link> </Button>
-        <Button variant='text'> <Link to="/addresses" style={{color: props.currentTheme.palette.text.primary, textDecoration: 'none' }}> Node Addresses </Link> </Button>
-        <Button variant='text'> <Link to="/transaction-history" style={{color: props.currentTheme.palette.text.primary, textDecoration: 'none' }}> Transaction History </Link> </Button>
+        <Link to="/" style={{textDecoration: 'none' }}> <Button style={{color: props.currentTheme.palette.text.primary, width:'100%'}} variant='text'>Home</Button></Link>
+        <Link to="/wallet" style={{textDecoration: 'none' }}> <Button style={{color: props.currentTheme.palette.text.primary, width:'100%'}} variant='text'>  My Wallet </Button> </Link> 
+        <Link to="/addresses" style={{textDecoration: 'none' }}> <Button style={{color: props.currentTheme.palette.text.primary, width:'100%'}} variant='text'>  Node Addresses </Button> </Link> 
+        <Link to="/transaction-history" style={{textDecoration: 'none' }}> <Button style={{color: props.currentTheme.palette.text.primary,width:'100%'}} variant='text'> Transaction History </Button> </Link> 
         <Footer style={{ position: "absolute", bottom: "0" }}/>
       </Drawer>
     </>
