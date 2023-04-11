@@ -9,6 +9,14 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import SensorOccupiedIcon from '@mui/icons-material/SensorOccupied';
 import { Link } from 'react-router-dom';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import StarIcon from '@mui/icons-material/Star';
+
+
+
 
 export default function Addresses(props) {
 
@@ -36,12 +44,13 @@ export default function Addresses(props) {
           </Typography>
           <Box component="form" noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-
-              {nodeAddresses.map((address) => (
-                <Grid item xs={12}>
-                  <Link to={`/transfer/${address}`} style={{ color: props.currentTheme.palette.text.primary }}> {address} </Link>
-                </Grid>
-              ))}
+              <List>
+                {nodeAddresses.map((address) => (
+                  <ListItem>
+                      <ListItemButton><ListItemIcon>🍕</ListItemIcon><Link to={`/transfer/${address}`} style={{ color: props.currentTheme.palette.text.primary }}> {address} </Link> </ListItemButton>
+                  </ListItem>
+                ))}  
+              </List>
             </Grid>
             <Grid container justifyContent="flex-end">
               <Grid item>
